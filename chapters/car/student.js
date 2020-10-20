@@ -65,8 +65,62 @@ function crookedUTurn(bike) {
 
 }
 function forwardUntilWall(bike) {
-    while (!sensor(bike)) {
+    while (!sensor(bike))
         forward(bike);
+}
+function smartEllShape(bike) {
+    forwardUntilWall(bike);
+    turnRight(bike);
+    forwardUntilWall(bike);
+}
+function spiral(car) {
+    let i = 18;
+
+    while (i > 0) {
+        forwardUntilWall(car);
+        turnRight(car);
+        i = i - 1;
     }
 }
+function turnLeft(car) {
+    turnRight(car);
+    turnRight(car);
+    turnRight(car);
+}
 
+function left(car) {
+    turnLeft(car);
+    forward(car);
+}
+function slalom(car) {
+    forwardUntilWall(car);
+    turnLeft(car);
+    forwardUntilWall(car);
+    turnRight(car);
+    forwardUntilWall(car);
+    turnRight(car);
+    forwardUntilWall(car);
+    turnLeft(car);
+    forwardUntilWall(car);
+    turnLeft(car);
+    forwardUntilWall(car);
+    turnRight(car);
+    forwardUntilWall(car);
+    turnRight(car);
+    forwardUntilWall(car);
+}
+function sensorRight(car) {
+    turnRight(car);
+    let result = sensor(car);
+    turnLeft(car);
+
+    return result;
+}
+function firstRight(car) {
+    while (sensorRight(car)) {
+        forward(car);
+    }
+    turnRight(car);
+    forwardUntilWall(car);
+    forward(car);
+}
