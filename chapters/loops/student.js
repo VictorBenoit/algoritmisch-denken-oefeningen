@@ -128,3 +128,131 @@ function countDivisors(n) {
         return y % x === 0;
     }
 }
+function gcd(x, y) {
+    const start = Math.min(x, y);
+    for (let i = start; i > 1; --i) {
+        if (isDivisorOf(i, x) && isDivisorOf(i, y)) {
+            return i;
+        }
+    }
+    return 1;
+
+    function isDivisorOf(x, y) {
+        return y % x === 0;
+    }
+}
+function lcm(x, y) {
+    let i = Math.max(x, y);
+    while (!isDivisorOf(x, i) || !isDivisorOf(y, i)) {
+        ++i;
+    }
+    return i;
+
+    function isDivisorOf(x, y) {
+        return y % x === 0;
+    }
+}
+function dice2(targetSum) {
+    let count = 0;
+    for (let i = 1; i <= 6; ++i) {
+        for (let j = 1; j <= 6; ++j) {
+            if (i + j === targetSum) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+function dice3(targetSum) {
+    let count = 0;
+    for (let i = 1; i <= 6; ++i) {
+        for (let j = 1; j <= 6; ++j) {
+            for (let k = 1; k <= 6; ++k) {
+                if (i + j + k === targetSum) {
+                    count++;
+                }
+            }
+        }
+    }
+    return count;
+}
+function isPrime(n) {
+    for (let i = 2; i * i <= n; ++i) {
+        if (n % i === 0) {
+            return false;
+        }
+    }
+    return n > 1;
+}
+function countPrimes(n) {
+    let result = 0;
+    for (let i = 0; i <= n; ++i) {
+        if (isPrime(i)) {
+            result++;
+        }
+    }
+    return result;
+}
+function power2(a, b) {
+    let result = 1;
+    for (let i = 0; i < b; ++i) {
+        result *= a;
+    }
+    return result;
+}
+function sumRange2(from, to) {
+    let total = 0;
+    for (let i = from; i <= to; ++i) {
+        total += i;
+    }
+    return total;
+}
+function invest(years) {
+    let amount = 1000;
+    for (let i = 0; i !== years; ++i) {
+        amount *= 1.05;
+        amount += 100;
+    }
+    return amount;
+}
+function invest2(goal) {
+    let amount = 1000;
+    let years = 0;
+    while (amount < goal) {
+        amount *= 1.05;
+        amount += 100;
+        ++years;
+    }
+    return years;
+}
+function dice4(targetSum) {
+    let count = 0;
+    for (let i = 1; i <= 6; ++i) {
+        for (let j = 1; j <= 6; ++j) {
+            for (let k = 1; k <= 6; ++k) {
+                for (let m = 1; m <= 6; ++m) {
+                    if (i + j + k + m === targetSum) {
+                        count++;
+                    }
+                }
+            }
+        }
+    }
+    return count;
+}
+
+function sqrt(n) {
+    let min = 0;
+    let max = n;
+    while (max - min > 0.01) {
+        const middle = (min + max) / 2;
+        if (middle ** 2 > n) {
+            max = middle;
+        } else if (middle ** 2 < n) {
+            min = middle;
+        } else {
+            return middle;
+        }
+    }
+    return (min + max) / 2;
+}

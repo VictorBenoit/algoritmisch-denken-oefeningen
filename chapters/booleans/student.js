@@ -39,3 +39,35 @@ function isValidDate(day, month, year) {
             (has28Days(month, year) && inRange(day, 1, 28)) ||
             (has29Days(month, year) && inRange(day, 1, 29)));
 }
+function daysInMonth(month, year) {
+    if (has31Days(month)) {
+        return 31;
+    } else if (has30Days(month)) {
+        return 30;
+    } else if (has29Days(month, year)) {
+        return 29;
+    } else if (has28Days(month, year)) {
+        return 28;
+    } else {
+        return -1;
+    }
+}
+function majority(x, y, z) {
+    return (x && y) || (x && z) || (y && z);
+}
+function isHigherCard(x, y) {
+    return (x === 1 && y !== 1) || (x > y && y !== 1);
+}
+function earlier(h1, m1, h2, m2) {
+    return h1 < h2 || (h1 === h2 && m1 < m2);
+}
+function isInteger(x) {
+    return x % 1 === 0;
+
+}
+function isPerfectSquare(x) {
+    return isInteger(x ** 0.5);
+}
+function isLiquidWaterAt(temperature) {
+    return (temperature - 50) ** 2 < 50 ** 2;
+}   
